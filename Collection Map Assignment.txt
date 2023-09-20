@@ -1,0 +1,150 @@
+package p4;
+
+import java.util.Objects;
+
+public class Account1 {
+
+	private int accountNumber;
+	private String accountHolderName;
+	private int balance;
+	private String location;
+	
+	public Account1() {}
+	
+	public Account1(int accountNumber, String accountHolderName, int balance, String location) {
+		super();
+		this.accountNumber = accountNumber;
+		this.accountHolderName = accountHolderName;
+		this.balance = balance;
+		this.location = location;
+	}
+	public int getAccountNumber() {
+		return accountNumber;
+	}
+	public void setAccountNumber(int accountNumber) {
+		this.accountNumber = accountNumber;
+	}
+	public String getAccountHolderName() {
+		return accountHolderName;
+	}
+	public void setAccountHolderName(String accountHolderName) {
+		this.accountHolderName = accountHolderName;
+	}
+	public int getBalance() {
+		return balance;
+	}
+	public void setBalance(int balance) {
+		this.balance = balance;
+	}
+	public String getLocation() {
+		return location;
+	}
+	public void setLocation(String location) {
+		this.location = location;
+	}
+	@Override
+	public String toString() {
+		return "Account1 [accountNumber=" + accountNumber + ", accountHolderName=" + accountHolderName + ", balance="
+				+ balance + ", location=" + location + "]";
+	}
+	@Override
+	public int hashCode() {
+		return Objects.hash(accountHolderName, accountNumber, balance, location);
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Account1 other = (Account1) obj;
+		return Objects.equals(accountHolderName, other.accountHolderName) && accountNumber == other.accountNumber
+				&& balance == other.balance && Objects.equals(location, other.location);
+	}
+	
+	
+	
+	
+	
+	
+}
+
+
+
+
+
+
+
+
+
+
+package p4;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
+
+import p3.Account;
+
+public class AccountMain {
+
+	public static void main(String[] args) {
+		
+		  Account a1 = new Account(1, "abc", 10000, "Mumbai");
+		  Account a2 = new Account(2, "xyz", 10500, "Hyderabad");
+		  Account a3 = new Account(3, "ghj", 20000, "Pune");
+ 		  Account a4 = new Account(4, "jkl", 5000, "Mumbai");
+		  Account a5 = new Account(5, "pqr", 35000, "Bangalore");
+		  
+		  Map<Integer,Account> accountMap = new HashMap<>();
+		  
+		  accountMap.put(a1.getAccountNumber(), a1);
+		  accountMap.put(a2.getAccountNumber(), a2);
+		  accountMap.put(a3.getAccountNumber(), a3);
+		  accountMap.put(a4.getAccountNumber(), a4);
+		  accountMap.put(a5.getAccountNumber(), a5);
+
+		  Scanner sc = new Scanner(System.in);
+		  System.out.println("please enter key to get account info");
+		  int key = sc.nextInt();
+		 Account acc = accountMap.get(key);
+		  System.out.println(acc.toString());
+		  
+		  System.out.println("please enter location to get account info");
+
+		  String loc = sc.next();
+		  
+		  Map<String,List<Account>> locAccount = new HashMap<>();
+		  List<Account> accountList = new ArrayList<>();
+		  for(Map.Entry<Integer, Account> accMap : accountMap.entrySet()) {
+			  if(accMap.getValue().getLocation().equals(loc)) {
+
+				  accountList.add(accMap.getValue());
+				 
+			  }
+		  }
+		  
+		  locAccount.put(loc, accountList);
+		  
+		  System.out.println(locAccount);
+		  
+		  
+	}
+		
+		
+	}
+
+
+
+
+
+
+
+
+
+
+
