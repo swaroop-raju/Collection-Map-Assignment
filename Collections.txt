@@ -1,0 +1,75 @@
+package c1;
+
+ 
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+ 
+
+public class Main {
+
+ 
+
+	HashMap<Integer, String> courseMap = new HashMap<>();
+	public static void main(String[] args) {
+
+		Scanner sc = new Scanner(System.in);
+
+		Main m = new Main();
+
+		while(true) {
+
+			System.out.println("Enter 1 to display\n");
+			System.out.println("Enter 2 to insert key and value\n");
+			int x = sc.nextInt();
+		    if (x == 1) {
+		    	m.display();
+
+		    }
+		    else if (x == 2) {
+		     m.insert();
+		    }
+		    else {
+		    	System.out.println("Invalid Input \n");
+		    	break;
+		    }
+		}
+		}
+		public void display() 
+		{
+
+			for (Map.Entry<Integer, String> mp : courseMap.entrySet()) {
+
+ 
+
+				System.out.println("\n" + mp.getKey() + " " + mp.getValue());
+
+		}
+
+		}	
+      public void insert() 
+
+      {
+    	  Scanner sc = new Scanner(System.in);
+    	  System.out.println("Insert Key");
+
+ 
+
+  		int k = Integer.parseInt(sc.nextLine());
+
+ 
+
+  		System.out.println("Insert Value");
+
+ 
+
+  		String v = sc.nextLine();
+
+  		courseMap.put(k, v);
+      }
+
+ 
+
+}
